@@ -35,8 +35,9 @@ wp-config.php
 # htaccess
 /.htaccess
 
-# all node modules
-/node_modules/
+# untracked files in CoreyInDaHouse27 theme
+/wp-content/themes/CoreyInDaHouse27/node_modules/
+/wp-content/themes/CoreyInDaHouse27/build/
 
 # All plugins
 #
