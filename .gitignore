@@ -35,6 +35,9 @@ wp-config.php
 # htaccess
 /.htaccess
 
+# all node modules
+/node_modules/
+
 # All plugins
 #
 # Note: If you wish to whitelist plugins,
