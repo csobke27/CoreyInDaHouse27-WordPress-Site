@@ -1,0 +1,9 @@
+{
+    "$schema": "https://schemas.wp.org/truck/block.json",
+    "apiVersion": 3,
+    "name": "dahousetheme/footer",
+    "editorScript": "file:./index.js",
+    "render": "file:./render.php",
+    "editorStyle": "file:./editor.css",
+    "style": "file:./style.css"
+}
