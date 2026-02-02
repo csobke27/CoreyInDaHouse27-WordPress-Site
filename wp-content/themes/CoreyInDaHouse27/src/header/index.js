@@ -5,6 +5,6 @@ import './editor.css';
 import './style.css';
 
 registerBlockType(metadata.name, {
-    title: 'CoreyInDaHouse Footer',
+    title: 'CoreyInDaHouse Header',
     edit: Edit
 });

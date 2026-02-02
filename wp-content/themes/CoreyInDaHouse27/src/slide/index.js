@@ -1,10 +1,10 @@
 import { registerBlockType } from '@wordpress/blocks';
 import metadata from './block.json';
 import Edit from './edit';
-import './editor.css';
-import './style.css';
+import { InnerBlocks } from '@wordpress/block-editor';
 
 registerBlockType(metadata.name, {
-    title: 'CoreyInDaHouse Footer',
-    edit: Edit
+    title: 'Slide',
+    edit: Edit,
+    save: () => {return <InnerBlocks.Content />;}
 });

@@ -1,0 +1,32 @@
+.site-header{
+    background-color: #f1a630;
+    color: #000000;    
+    padding: 20px 0;
+}
+
+.site-header a{
+    color: #000000;
+    text-decoration: none;
+}
+
+.header{
+    background-color:#f1a630
+}
+
+.nav-link{
+    border-radius: .25rem;
+    padding: .5rem 1rem;
+    transition: all 0.3s ease-in-out;
+}
+
+.nav-link.active, .nav-link:hover{
+    color: #ffffff !important;
+    background-color:#9c04ae;
+}
+
+.twitch-live-notification{
+    background-color: purple;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+}

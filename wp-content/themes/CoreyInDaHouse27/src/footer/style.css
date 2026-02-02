@@ -1,0 +1,94 @@
+.site-footer{
+    background-color: #f1a630;
+    /* color: #000000;     */
+    padding: 20px 0;
+}
+
+.contact-info, .explore-info{
+    list-style-type: none;
+    padding: 0;
+}
+
+.social-links{
+    list-style-type: none;
+    padding: 0;
+    text-align: center;
+}
+
+.social-links > li{
+    margin-bottom: 8px;
+}
+
+@media (min-width: 768px) {
+    .social-links{
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .social-links > li{
+        flex: 0 0 calc(50% - 4px);
+        margin-bottom: 0;
+    }
+
+    .social-links > li > a{
+        padding: 8px 16px;
+    }
+}
+
+@media (max-width: 767px) {
+    .social-links > li > a{
+        padding: 12px 20px;
+    }
+}
+
+.explore-info > li > a, .social-links > li > a{
+    text-decoration: none;
+}
+
+.explore-info > li > a{
+    color: #666;
+}
+
+.social-links > li > a{
+    color: white;
+    font-size: 1rem;
+    display: block;
+    border-radius: 8px;
+    transition: opacity 0.3s ease;
+    width: 100%;
+}
+
+.social-links > li > a:hover{
+    opacity: 0.7;
+}
+
+.social-links > li > a > i{
+    margin-right: 8px;
+}
+
+.social-color-twitch{
+    background-color: #9146FF;
+}
+
+.social-color-youtube{
+    background-color: #FF0000;
+}
+
+.social-color-twitter{
+    background-color: #000000;
+}
+
+.social-color-facebook{
+    background-color: #3b5998;
+}
+
+.social-color-instagram{
+    background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
+}
+
+.footer-sub-heading{
+    /* color: #666; */
+    color:black;
+    /* text-align: center; */
+}
