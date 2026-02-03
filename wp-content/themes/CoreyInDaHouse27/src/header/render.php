@@ -15,10 +15,13 @@
                 <a class="nav-link" href="#">About</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">blog</a>
+                <a class="nav-link" href="#">Blog</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">Merch</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Content</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">Socials</a>

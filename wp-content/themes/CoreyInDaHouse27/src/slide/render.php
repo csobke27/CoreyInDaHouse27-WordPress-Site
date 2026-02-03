@@ -4,7 +4,7 @@ if(!empty($attributes['themeimage'])){
     $attributes['imgUrl'] = get_theme_file_uri('/images/' . $attributes['themeimage']);
 }
 if(!isset($attributes['imgUrl'])) {
-    $attributes['imgUrl'] = get_theme_file_uri('/images/library-hero.jpg');
+    $attributes['imgUrl'] = get_theme_file_uri('/images/slide-default.jpg');
 }
 ?>
 

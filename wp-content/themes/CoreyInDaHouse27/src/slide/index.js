@@ -4,7 +4,7 @@ import Edit from './edit';
 import { InnerBlocks } from '@wordpress/block-editor';
 
 registerBlockType(metadata.name, {
-    title: 'Slide',
+    title: 'Slideshow Slide',
     edit: Edit,
     save: () => {return <InnerBlocks.Content />;}
 });

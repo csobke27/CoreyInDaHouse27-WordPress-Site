@@ -9,17 +9,17 @@
     padding: 0;
 }
 
-.social-links{
+.social-links, .content-platforms{
     list-style-type: none;
     padding: 0;
     text-align: center;
 }
 
-.social-links > li{
+.social-links > li, .content-platforms > li{
     margin-bottom: 8px;
 }
 
-@media (min-width: 768px) {
+/* @media (min-width: 768px) {
     .social-links{
         display: flex;
         flex-wrap: wrap;
@@ -40,7 +40,7 @@
     .social-links > li > a{
         padding: 12px 20px;
     }
-}
+} */
 
 .explore-info > li > a, .social-links > li > a{
     text-decoration: none;
@@ -50,20 +50,21 @@
     color: #666;
 }
 
-.social-links > li > a{
+.social-links > li > a, .content-platforms > li > a{
     color: white;
     font-size: 1rem;
     display: block;
     border-radius: 8px;
     transition: opacity 0.3s ease;
     width: 100%;
+    padding: 8px;
 }
 
-.social-links > li > a:hover{
+.social-links > li > a:hover, .content-platforms > li > a:hover{
     opacity: 0.7;
 }
 
-.social-links > li > a > i{
+.social-links > li > a > i, .content-platforms > li > a > i{
     margin-right: 8px;
 }
 
@@ -85,6 +86,14 @@
 
 .social-color-instagram{
     background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
+}
+
+.social-color-tiktok{
+    background-color: #000000;
+}
+
+.social-color-discord{
+    background-color: #5865F2;
 }
 
 .footer-sub-heading{
