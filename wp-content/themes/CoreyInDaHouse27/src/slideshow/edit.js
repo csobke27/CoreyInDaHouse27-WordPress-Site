@@ -7,7 +7,7 @@ export default function Edit(props) {
         <div {...blockProps}>
             <div style={{backgroundColor: '#333', padding: "35px"}}>
                 <p style={{textAlign: 'center', fontSize: '20px', color: '#FFF'}}>Slideshow Block Editor</p>
-                <InnerBlocks allowedBlocks={['ourblocktheme/slide']} />
+                <InnerBlocks allowedBlocks={['dahousetheme/slide']} />
             </div>
         </div>
     )

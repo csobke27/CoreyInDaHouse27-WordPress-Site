@@ -11,7 +11,7 @@ export default function Edit(props) {
             props.setAttributes({ imgUrl:  `${ourThemeData.themePath}/images/${props.attributes.themeimage}`});
         }
         if(!props.attributes.themeimage && !props.attributes.imgUrl){
-            props.setAttributes({ imgUrl: `${ourThemeData.themePath}/images/library-hero.jpg` });
+            props.setAttributes({ imgUrl: `${ourThemeData.themePath}/images/slide-default.jpg` });
         }
     }, []);
 
@@ -19,7 +19,7 @@ export default function Edit(props) {
         if(props.attributes.imgId) {
             async function fetchImageUrl() {
                 const response = await apiFetch({ path: `/wp/v2/media/${props.attributes.imgId}`, method: 'GET' });
-                props.setAttributes({ themeimage: "", imgUrl: response.media_details.sizes.pageBanner.source_url });
+                props.setAttributes({ themeimage: "", imgUrl: response.media_details.sizes.full.source_url });
             }
             fetchImageUrl();
         }

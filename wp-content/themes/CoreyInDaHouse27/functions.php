@@ -40,6 +40,8 @@
         register_block_type( get_template_directory() . '/build/slideshow' );
         register_block_type( get_template_directory() . '/build/slide' );
         register_block_type( get_template_directory() . '/build/page-not-found' );
+        register_block_type( get_template_directory() . '/build/singlepost' );
+        register_block_type( get_template_directory() . '/build/archiveabout' );
     }
 
     function coreyindahouse_files() {

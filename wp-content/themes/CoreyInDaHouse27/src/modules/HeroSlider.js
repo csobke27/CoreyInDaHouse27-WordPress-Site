@@ -20,7 +20,8 @@ class HeroSlider {
       var glide = new Glide(currentSlideshow, {
         type: "carousel",
         perView: 1,
-        autoplay: dotCount > 1 ? 8000 : false
+        autoplay: false
+        // autoplay: dotCount > 1 ? 8000 : false
       })
 
       glide.mount()
