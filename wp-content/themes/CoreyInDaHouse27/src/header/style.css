@@ -13,13 +13,13 @@
     background-color:#f1a630
 }
 
-.nav-link{
+.header-nav{
     border-radius: .25rem;
     padding: .5rem 1rem;
     transition: all 0.3s ease-in-out;
 }
 
-.nav-link.active, .nav-link:hover{
+.header-nav.active, .header-nav:hover{
     color: #ffffff !important;
     background-color:#9c04ae;
 }

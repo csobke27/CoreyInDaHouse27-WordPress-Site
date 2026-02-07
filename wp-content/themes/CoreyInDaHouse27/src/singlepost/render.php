@@ -11,10 +11,11 @@ $featured_image = get_the_post_thumbnail_url(get_the_ID(), 'medium');
         <?php echo $featured_image?>)">
     </div>
     <div class="page-banner__content container container--narrow">
-        <h1 class="page-banner__title"><?php echo get_the_title();?></h1>
+        <h1 class="page-banner__title header-outline"><?php echo get_the_title();?></h1>
         <div class="page-banner__intro">
           <p>Posted on <?php the_time('n/j/y'); ?></p>
-          <p>By <?php the_author(); ?></p>
+          <!-- <p>By <?php the_author(); ?></p> -->
+          <img class="author-profile-pic" src="<?php echo $featured_image ?>" alt="Author profile picture">
         </div>
     </div>
 </div>
@@ -23,7 +24,7 @@ $featured_image = get_the_post_thumbnail_url(get_the_ID(), 'medium');
   <!-- <div class="metabox metabox--position-up metabox--with-home-link">
     <p><a class="metabox__blog-home-link" href="<?php echo site_url('/blog'); ?>"><i class="fa fa-home" aria-hidden="true"></i> Blog Home</a> <span class="metabox__main">Posted by <?php the_author_posts_link(); ?> on <?php the_time('n.j.y'); ?> in <?php echo get_the_category_list(', '); ?></span></p>
   </div> -->
-  <div class="row">
+  <div class="row blog-content">
     <div class="blog-content col"><?php the_content(); ?></div>
   </div>
 

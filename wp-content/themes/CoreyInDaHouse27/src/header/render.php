@@ -12,22 +12,22 @@
             
             <ul class="navbar-nav ml-auto  mt-2 mt-xl-0">
             <li class="nav-item">
-                <a class="nav-link" href="<?php echo esc_url(site_url('/about')); ?>">About</a>
+                <a class="nav-link header-nav <?php if (is_page('about')) echo  "active" ?>" href="<?php echo esc_url(site_url('/about')); ?>">About</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="<?php echo esc_url(site_url('/blog')); ?>">Blog</a>
+                <a class="nav-link header-nav <?php if (is_page('blog')) echo  "active" ?>" href="<?php echo esc_url(site_url('/blog')); ?>">Blog</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Merch</a>
+                <a class="nav-link header-nav" href="#">Merch</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Content</a>
+                <a class="nav-link header-nav" href="#">Content</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Socials</a>
+                <a class="nav-link header-nav" href="#">Socials</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link disabled" href="#">Stream extensions</a>
+                <a class="nav-link header-nav disabled" href="#">Stream extensions</a>
             </li>
             </ul>
             <form class="form-inline my-2 my-lg-0">

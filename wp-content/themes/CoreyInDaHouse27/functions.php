@@ -21,6 +21,7 @@
     add_action('enqueue_block_assets', 'dahouse_editor_assets');
     function dahouse_editor_assets() {
         if (is_admin()) {
+            wp_enqueue_style('bootstrap-css-editor', 'https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css');
             wp_enqueue_style('dahouse_editor_styles', get_theme_file_uri('/build/index.css'));
         }
         wp_enqueue_style('dahouse_frontend_styles', get_theme_file_uri('/build/style-index.css'));
@@ -42,6 +43,7 @@
         register_block_type( get_template_directory() . '/build/page-not-found' );
         register_block_type( get_template_directory() . '/build/singlepost' );
         register_block_type( get_template_directory() . '/build/archiveabout' );
+        register_block_type( get_template_directory() . '/build/bloghome' );
     }
 
     function coreyindahouse_files() {
