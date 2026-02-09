@@ -18,16 +18,13 @@
                 <a class="nav-link header-nav <?php if (is_page('blog')) echo  "active" ?>" href="<?php echo esc_url(site_url('/blog')); ?>">Blog</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link header-nav" href="#">Merch</a>
+                <a class="nav-link header-nav disabled" href="#">Merch</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link header-nav" href="#">Content</a>
+                <a class="nav-link header-nav <?php if (is_page('content')) echo  "active" ?>" href="<?php echo esc_url(site_url('/content')); ?>">Content</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link header-nav" href="#">Socials</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link header-nav disabled" href="#">Stream extensions</a>
+                <a class="nav-link header-nav disabled" href="#">Game extensions</a>
             </li>
             </ul>
             <form class="form-inline my-2 my-lg-0">

@@ -19,33 +19,6 @@
     margin-bottom: 8px;
 }
 
-/* @media (min-width: 768px) {
-    .social-links{
-        display: flex;
-        flex-wrap: wrap;
-        gap: 8px;
-    }
-
-    .social-links > li{
-        flex: 0 0 calc(50% - 4px);
-        margin-bottom: 0;
-    }
-
-    .social-links > li > a{
-        padding: 8px 16px;
-    }
-}
-
-@media (max-width: 767px) {
-    .social-links > li > a{
-        padding: 12px 20px;
-    }
-} */
-
-.explore-info > li > a, .social-links > li > a{
-    text-decoration: none;
-}
-
 .explore-info > li > a{
     color: #666;
 }

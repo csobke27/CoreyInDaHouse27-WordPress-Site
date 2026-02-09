@@ -1,7 +1,7 @@
 <?php
 
     add_action('after_setup_theme', 'CoreyInDaHouse27_features');
-
+    add_post_type_support( 'page', 'excerpt' );
     function CoreyInDaHouse27_features() {
         add_theme_support('title-tag');
         add_theme_support('post-thumbnails');
@@ -43,6 +43,7 @@
         register_block_type( get_template_directory() . '/build/page-not-found' );
         register_block_type( get_template_directory() . '/build/singlepost' );
         register_block_type( get_template_directory() . '/build/archiveabout' );
+        register_block_type( get_template_directory() . '/build/singleabout' );
         register_block_type( get_template_directory() . '/build/bloghome' );
     }
 

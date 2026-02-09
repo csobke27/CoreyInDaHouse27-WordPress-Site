@@ -20,7 +20,7 @@ $childPages = new WP_Query( array(
                 </div>
                 <div class="col-lg-6">
                     <h2><?php echo get_the_title( $childPage->ID ); ?></h2>
-                    <p><?php echo apply_filters( 'the_content', $childPage->post_content ); ?></p>
+                    <p><?php if(has_excerpt( $childPage->ID )) { echo get_the_excerpt( $childPage->ID ); } else { echo apply_filters( 'the_content', $childPage->post_content ); } ?></p>
                     <div class="d-flex justify-content-end">
                         <a href="<?php echo get_permalink( $childPage->ID ); ?>" class="btn btn-primary">Learn More</a>
                     </div>
@@ -32,7 +32,7 @@ $childPages = new WP_Query( array(
                 <img src="<?php echo esc_url( $imgUrl ); ?>" alt="CoreyInDaHouse27">
                 <div class="card-body">
                     <h5 class="card-title"><?php echo get_the_title( $childPage->ID ); ?></h5>
-                    <p class="card-text"><?php echo apply_filters( 'the_content', $childPage->post_content ); ?></p>
+                    <p class="card-text"><?php if(has_excerpt( $childPage->ID )) { echo get_the_excerpt( $childPage->ID ); } else { echo apply_filters( 'the_content', $childPage->post_content ); } ?></p>
                     <a href="<?php echo get_permalink( $childPage->ID ); ?>" class="btn btn-primary">Learn More</a>
                 </div>
             </div>

@@ -12,7 +12,7 @@ $page = get_query_var('paged') ? get_query_var('paged') : 1;
 // if selectedCategory is not set, select the latest 4 posts from each category
 $query = array(
     'post_type' => 'post',
-    'posts_per_page' => 2,
+    'posts_per_page' => 9,
     'paged' => $page,
     'orderby' => 'date',
     'order' => 'DESC'
@@ -24,6 +24,9 @@ if ($selectedCategory) {
 $postQuery = new WP_Query($query);
 // Fetch posts based on the query
 $posts = $postQuery->posts;
+// Get total number of pages for pagination
+$maxPages = $postQuery->max_num_pages;
+
 ?>
 <div class="bloghome-container">
     <div class="container">
@@ -73,5 +76,24 @@ $posts = $postQuery->posts;
             </div>
             <?php endwhile; ?>
         </div>
+        <?php if ($maxPages > 1): ?>
+            <div class="pagination-container">
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item <?php echo ($page <= 1) ? 'disabled' : ''; ?>">
+                            <a class="page-link" href="<?php echo esc_url(add_query_arg('paged', max(1, $page - 1))); ?>" tabindex="-1">Previous</a>
+                        </li>
+                        <?php for ($i = 1; $i <= $maxPages; $i++): ?>
+                            <li class="page-item <?php echo ($i == $page) ? 'active' : ''; ?>">
+                                <a class="page-link" href="<?php echo esc_url(add_query_arg('paged', $i)); ?>"><?php echo $i; ?></a>
+                            </li>
+                        <?php endfor; ?>
+                        <li class="page-item <?php echo ($page >= $maxPages) ? 'disabled' : ''; ?>">
+                            <a class="page-link" href="<?php echo esc_url(add_query_arg('paged', min($maxPages, $page + 1))); ?>">Next</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        <?php endif; ?>
     </div>
 </div>
