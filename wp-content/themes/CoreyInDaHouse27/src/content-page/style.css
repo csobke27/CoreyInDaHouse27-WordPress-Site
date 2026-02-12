@@ -1,0 +1,110 @@
+.horizontal-accordion{
+     display: flex;
+     width: 100%;
+     padding: 0;
+}
+ .choice{
+     height: 180px;
+     box-sizing: border-box;
+     padding: 0;
+     overflow: hidden;
+     float: left;
+     align-items: center;
+     transition: width 0.2s;
+     border-radius:3px;
+}
+ .expand{
+     width: 65%;
+}
+ .unset{
+     width: 16%;
+     color: black !important;
+     background-color: #ddd !important;
+}
+ .small{
+     width: 5%;
+     background-color: #ddd !important;
+}
+ .small>div{
+     opacity: 0;
+}
+ .unset > div > p{
+     opacity: 0;
+}
+ .expand > div {
+     transition-delay: 200ms;
+     opacity: 1;
+}
+
+.horizontal-accordion-container {
+    display: flex;
+    width: 100%;
+    min-height: 400px;
+    gap: 10px;
+    margin: 2rem 0;
+    align-items: stretch;
+}
+
+.accordion-card {
+    min-height: 400px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: flex 0.4s ease, min-height 0.4s ease;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    flex: 1;
+}
+
+.accordion-card.collapsed {
+    flex: 1;
+    min-height: 400px;
+}
+
+.horizontal-accordion-container:has(.expanded) .accordion-card.collapsed {
+    flex: 0 0 80px;
+}
+
+.accordion-card.expanded {
+    flex: 3;
+    min-height: fit-content;
+}
+
+.card-header {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    height: 100%;
+    transition: all 0.4s ease;
+}
+
+.accordion-card.collapsed .card-header h2 {
+    margin: 10px 0;
+    font-size: 1.2rem;
+}
+
+.accordion-card.expanded .card-header {
+    height: auto;
+    padding: 30px;
+}
+
+.card-content {
+    padding: 0 20px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    color: white;
+    text-align: center;
+    height: 0;
+    overflow: hidden;
+}
+
+.accordion-card.expanded .card-content {
+    opacity: 1;
+    padding: 20px 30px 30px;
+    height: auto;
+    /* overflow-y: auto; */
+}

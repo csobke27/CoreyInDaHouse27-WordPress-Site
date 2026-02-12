@@ -45,6 +45,9 @@
         register_block_type( get_template_directory() . '/build/archiveabout' );
         register_block_type( get_template_directory() . '/build/singleabout' );
         register_block_type( get_template_directory() . '/build/bloghome' );
+        register_block_type( get_template_directory() . '/build/content-page' );
+        register_block_type( get_template_directory() . '/build/hoverbox' );
+        register_block_type( get_template_directory() . '/build/hoveritem' );
     }
 
     function coreyindahouse_files() {
@@ -95,3 +98,123 @@
             show_admin_bar(false);
         }
     }
+
+    function get_youtube_data($channel_id, $api_key) {
+    // Get channel stats (subscribers)
+    $channel_url = "https://www.googleapis.com/youtube/v3/channels?part=statistics,snippet&id={$channel_id}&key={$api_key}";
+    $channel_response = wp_remote_get($channel_url);
+    $channel_data = json_decode(wp_remote_retrieve_body($channel_response), true);
+    
+    // Get latest video
+    $videos_url = "https://www.googleapis.com/youtube/v3/search?key={$api_key}&channelId={$channel_id}&part=snippet,id&order=date&maxResults=1";
+    $videos_response = wp_remote_get($videos_url);
+    $videos_data = json_decode(wp_remote_retrieve_body($videos_response), true);
+    
+    return array(
+        'subscribers' => $channel_data['items'][0]['statistics']['subscriberCount'],
+        'latest_video' => array(
+            'id' => $videos_data['items'][0]['id']['videoId'],
+            'title' => $videos_data['items'][0]['snippet']['title'],
+            'thumbnail' => $videos_data['items'][0]['snippet']['thumbnails']['medium']['url'],
+            'url' => 'https://www.youtube.com/watch?v=' . $videos_data['items'][0]['id']['videoId']
+        )
+    );
+}
+
+function format_number_short($number) {
+    $number = (int)$number; // Ensure it's a number
+    if ($number >= 1000000) {
+        return round($number / 1000000, 2) . 'M';
+    } elseif ($number >= 1000) {
+        return round($number / 1000, 2) . 'K';
+    }
+    return $number;
+}
+
+function get_youtube_channel_data($channel_id, $api_key) {
+    // Check cache first
+    $cached_data = get_transient('youtube_channel_data');
+    if ($cached_data !== false) {
+        $cached_data['subscriber_count'] = $cached_data['subscriber_count'];
+        return $cached_data;
+    }
+    
+    // Get channel statistics (subscribers)
+    $channel_url = "https://www.googleapis.com/youtube/v3/channels?part=statistics,snippet&id={$channel_id}&key={$api_key}";
+    $channel_response = wp_remote_get($channel_url);
+    
+    if (is_wp_error($channel_response)) {
+        return false;
+    }
+    
+    $channel_data = json_decode(wp_remote_retrieve_body($channel_response), true);
+    
+    // Get latest video
+    $videos_url = "https://www.googleapis.com/youtube/v3/search?key={$api_key}&channelId={$channel_id}&part=snippet,id&order=date&maxResults=1&type=video";
+    $videos_response = wp_remote_get($videos_url);
+    
+    if (is_wp_error($videos_response)) {
+        return false;
+    }
+    
+    $videos_data = json_decode(wp_remote_retrieve_body($videos_response), true);
+    
+    $result = array(
+        'subscriber_count' => format_number_short($channel_data['items'][0]['statistics']['subscriberCount']),
+        'video_count' => $channel_data['items'][0]['statistics']['videoCount'],
+        'latest_video' => array(
+            'id' => $videos_data['items'][0]['id']['videoId'],
+            'title' => $videos_data['items'][0]['snippet']['title'],
+            'thumbnail' => $videos_data['items'][0]['snippet']['thumbnails']['high']['url'],
+            'url' => 'https://www.youtube.com/watch?v=' . $videos_data['items'][0]['id']['videoId'],
+            'published_at' => $videos_data['items'][0]['snippet']['publishedAt']
+        )
+    );
+    
+    // Cache for 1 hour
+    set_transient('youtube_channel_data', $result, HOUR_IN_SECONDS);
+    
+    return $result;
+}
+
+function get_facebook_posts($page_id, $access_token, $limit = 3) {
+    // Check cache
+    $cache_key = 'facebook_posts_' . $page_id;
+    $cached_data = get_transient($cache_key);
+    if ($cached_data !== false) {
+        return $cached_data;
+    }
+    
+    // Get posts from page
+    $url = "https://graph.facebook.com/v18.0/{$page_id}/posts?fields=id,message,created_time,full_picture,permalink_url,likes.summary(true),comments.summary(true)&limit={$limit}&access_token={$access_token}";
+    echo $url; // Debugging line to check the URL being called
+    $response = wp_remote_get($url);
+    
+    if (is_wp_error($response)) {
+        return false;
+    }
+    
+    $data = json_decode(wp_remote_retrieve_body($response), true);
+    
+    if (!isset($data['data'])) {
+        return false;
+    }
+    
+    $posts = array();
+    foreach ($data['data'] as $post) {
+        $posts[] = array(
+            'id' => $post['id'],
+            'message' => isset($post['message']) ? $post['message'] : '',
+            'image' => isset($post['full_picture']) ? $post['full_picture'] : '',
+            'created_at' => $post['created_time'],
+            'url' => $post['permalink_url'],
+            'likes' => isset($post['likes']) ? $post['likes']['summary']['total_count'] : 0,
+            'comments' => isset($post['comments']) ? $post['comments']['summary']['total_count'] : 0
+        );
+    }
+    
+    // Cache for 30 minutes
+    set_transient($cache_key, $posts, 30 * MINUTE_IN_SECONDS);
+    
+    return $posts;
+}

@@ -1,0 +1,17 @@
+{
+    "$schema": "https://schemas.wp.org/truck/block.json",
+    "apiVersion": 3,
+    "name": "dahousetheme/hoveritem",
+    "editorScript": "file:./index.js",
+    "render": "file:./render.php",
+    "supports": {
+        "align": ["full"]
+    },
+    "attributes": {
+        "align": { "type": "string", "default": "full" },
+        "slide-direction": { "type": "string", "default": "right" },
+        "imgId": { "type": "number" },
+        "imgUrl": { "type": "string" },
+        "themeimage": { "type": "string"}
+    }
+}
