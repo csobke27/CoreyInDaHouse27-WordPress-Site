@@ -1,0 +1,9 @@
+{
+    "$schema": "https://schemas.wp.org/truck/block.json",
+    "apiVersion": 3,
+    "name": "dahousetheme/game-extensions",
+    "editorScript": "file:./index.js",
+    "render": "file:./render.php",
+    "editorStyle": "file:./index.css",
+    "style": "file:./style-index.css"
+}

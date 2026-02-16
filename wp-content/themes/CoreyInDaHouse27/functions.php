@@ -1,4 +1,48 @@
 <?php
+    // Register Custom Post Type for DBD Perks
+    function create_dbd_posttype(){
+        register_post_type('dbd',
+            array(
+                'labels' => array(
+                    'name' => __('DBD Perks'),
+                    'singular_name' => __('DBD Perk'),
+                    'add_new_item' => __('Add New DBD Perk'),
+                    'new_item' => __('New DBD Perk'),
+                    'all_items' => __('All DBD Perks'),
+                    'edit_item' => __('Edit DBD Perk'),
+                ),
+                'public' => true,
+                'has_archive' => true,
+                'rewrite' => array('slug' => 'dbd'),
+                'show_in_rest' => true,
+                'menu_icon' => 'dashicons-games',
+                'rewrite' => array('slug' => 'dbd-perks'),
+            )
+        );
+    }
+    add_action('init', 'create_dbd_posttype');
+
+    // register custom post type for Game Extensions
+    function create_game_extensions_posttype(){
+        register_post_type('game-extensions',
+            array(
+                'labels' => array(
+                    'name' => __('Game Extensions'),
+                    'singular_name' => __('Game Extension'),
+                    'add_new_item' => __('Add New Game Extension'),
+                    'new_item' => __('New Game Extension'),
+                    'all_items' => __('All Game Extensions'),
+                    'edit_item' => __('Edit Game Extension'),
+                ),
+                'public' => true,
+                'has_archive' => true,
+                'rewrite' => array('slug' => 'game-extensions'),
+                'show_in_rest' => true,
+                'menu_icon' => 'dashicons-games',
+            )
+        );
+    }
+    add_action('init', 'create_game_extensions_posttype');
 
     add_action('after_setup_theme', 'CoreyInDaHouse27_features');
     add_post_type_support( 'page', 'excerpt' );
@@ -48,6 +92,7 @@
         register_block_type( get_template_directory() . '/build/content-page' );
         register_block_type( get_template_directory() . '/build/hoverbox' );
         register_block_type( get_template_directory() . '/build/hoveritem' );
+        register_block_type( get_template_directory() . '/build/game-extensions' );
     }
 
     function coreyindahouse_files() {

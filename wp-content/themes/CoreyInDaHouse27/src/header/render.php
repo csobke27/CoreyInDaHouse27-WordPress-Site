@@ -24,7 +24,7 @@
                 <a class="nav-link header-nav disabled" href="#">Merch</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link header-nav disabled" href="#">Game extensions</a>
+                <a class="nav-link header-nav <?php if (is_page('game-extensions')) echo  "active" ?>" href="<?php echo esc_url(site_url('/game-extensions')); ?>">Game Extensions</a>
             </li>
             </ul>
             <form class="form-inline my-2 my-lg-0">
