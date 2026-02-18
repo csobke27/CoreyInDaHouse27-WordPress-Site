@@ -44,6 +44,28 @@
     }
     add_action('init', 'create_game_extensions_posttype');
 
+    // register custom post type for Game  
+    function create_game_extension_mode_posttype(){
+        register_post_type('game-extension-mode',
+            array(
+                'labels' => array(
+                    'name' => __('Game Extension Modes'),
+                    'singular_name' => __('Game Extension Mode'),
+                    'add_new_item' => __('Add New Game Extension Mode'),
+                    'new_item' => __('New Game Extension Mode'),
+                    'all_items' => __('All Game Extension Modes'),
+                    'edit_item' => __('Edit Game Extension Mode'),
+                ),
+                'public' => true,
+                'has_archive' => true,
+                'rewrite' => array('slug' => 'game-extension-modes'),
+                'show_in_rest' => true,
+                'menu_icon' => 'dashicons-games',
+            )
+        );
+    }
+    add_action('init', 'create_game_extension_mode_posttype');
+
     add_action('after_setup_theme', 'CoreyInDaHouse27_features');
     add_post_type_support( 'page', 'excerpt' );
     function CoreyInDaHouse27_features() {
@@ -109,6 +131,12 @@
         wp_enqueue_script('bootstrap-js', 'https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js', array('jquery'), null, true);
     }
     add_action('wp_enqueue_scripts', 'coreyindahouse_files');
+
+    function enqueue_swiper_assets() {
+        wp_enqueue_style('swiper-css', 'https://unpkg.com/swiper/swiper-bundle.min.css');
+        wp_enqueue_script('swiper-js', 'https://unpkg.com/swiper/swiper-bundle.min.js', [], null, true);
+    }
+    add_action('wp_enqueue_scripts', 'enqueue_swiper_assets');
 
     function coreyindahouse_features() {
         // Add support for custom menus

@@ -27,10 +27,10 @@
                 <a class="nav-link header-nav <?php if (is_page('game-extensions')) echo  "active" ?>" href="<?php echo esc_url(site_url('/game-extensions')); ?>">Game Extensions</a>
             </li>
             </ul>
-            <form class="form-inline my-2 my-lg-0">
+            <!-- <form class="form-inline my-2 my-lg-0">
             <input class="form-control mr-sm-2" type="search" placeholder="Search">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form>
+            </form> -->
         </div>
     </nav>
     <!-- this is a placeholder for the twitch live notification. API needed -->

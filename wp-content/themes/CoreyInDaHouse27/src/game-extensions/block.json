@@ -5,5 +5,6 @@
     "editorScript": "file:./index.js",
     "render": "file:./render.php",
     "editorStyle": "file:./index.css",
-    "style": "file:./style-index.css"
+    "style": "file:./style-index.css",
+    "viewScript": "file:./view.js"
 }
