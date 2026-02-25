@@ -1,0 +1,13 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "supports": {
+    "interactivity": true
+  },
+  "name": "dahousetheme/diy-chaos-shuffle",
+  "title": "DIY Chaos Shuffle",
+  "editorScript": "file:./index.js",
+  "render": "file:./render.php",
+  "style": "file:./style-index.css",
+  "viewScriptModule": "file:./view.js"
+}

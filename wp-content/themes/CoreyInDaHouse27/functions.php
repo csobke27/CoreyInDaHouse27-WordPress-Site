@@ -1,7 +1,10 @@
 <?php
+
+    include get_template_directory() . '/includes/dbd-chaos-shuffle.php';
+    add_filter('acf/rest_api/field_settings/show_in_rest', '__return_true');
     // Register Custom Post Type for DBD Perks
     function create_dbd_posttype(){
-        register_post_type('dbd',
+        register_post_type('dbd_perks',
             array(
                 'labels' => array(
                     'name' => __('DBD Perks'),
@@ -13,10 +16,10 @@
                 ),
                 'public' => true,
                 'has_archive' => true,
-                'rewrite' => array('slug' => 'dbd'),
+                'rewrite' => array('slug' => 'dbd-perks'),
                 'show_in_rest' => true,
                 'menu_icon' => 'dashicons-games',
-                'rewrite' => array('slug' => 'dbd-perks'),
+                // 'rewrite' => array('slug' => 'dbd-perks'),
             )
         );
     }
@@ -115,6 +118,7 @@
         register_block_type( get_template_directory() . '/build/hoverbox' );
         register_block_type( get_template_directory() . '/build/hoveritem' );
         register_block_type( get_template_directory() . '/build/game-extensions' );
+        register_block_type( get_template_directory() . '/build/diy-chaos-shuffle');
     }
 
     function coreyindahouse_files() {
