@@ -173,14 +173,18 @@ function getPerkFields($posts){
             }
         }
         $all_fields = array_merge($all_fields, $fields);
+        $name = $all_fields['survivor_name'] ?? $all_fields['killer_name'] ?? 'Base';
+        if($name == ""){
+            $name = 'Base';
+        }
 
         $post_data[] = array(
             'id' => $postId,
-            'title' => get_the_title(),
+            'title' => html_entity_decode(get_the_title(), ENT_QUOTES | ENT_HTML5, 'UTF-8'),
             'content' => get_the_content(),
             'perk_icon_url' => $all_fields['perk_icon']['url'] ?? '',
             'perk_icon_alt' => $all_fields['perk_icon']['alt'] ?? '',
-            'name' => $all_fields['survivor_name'] ?? $all_fields['killer_name'] ?? 'Base',
+            'name' => $name,
             'acf_fields' => $all_fields,
         );
         // Process fields as needed

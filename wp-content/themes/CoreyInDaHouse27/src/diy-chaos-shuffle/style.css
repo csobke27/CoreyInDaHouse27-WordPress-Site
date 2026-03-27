@@ -17,7 +17,7 @@
 }
 
 #chaosShuffleApp{
-  min-height: calc(100vh - 86.469px - 286.375px - 32px);
+  min-height: calc(100vh - 86.469px - 286.375px);
 }
 
 .dbd-player-name, .perks-container{

@@ -1,0 +1,14 @@
+{
+    "version": 2,
+    "settings": {
+        "color": {
+            "palette": [
+                {
+                    "name": "dbd quote",
+                    "slug": "dbd-quote",
+                    "color": "#e7cda2"
+                }
+            ]
+        }
+    }
+}
